@@ -43,7 +43,7 @@ export const WEEKLY_SCHEDULE = {
       ]
     },
   ],
-  day2: [ // Даваа гараг (2026-03-23-нд таарч байгаа)
+  day2: [
     { 
       id: 3, 
       name: "Магадлал ба статистик", 
@@ -71,14 +71,14 @@ export const WEEKLY_SCHEDULE = {
     },
   ],
 }
-// data/MockData.js
+
 
 export const UPCOMING_DEADLINES = [
   {
     id: "d1",
     subject: "Мобайл програмчлал",
     task: "Бие даалт 1 (UI Design)",
-    dueDate: "2026-03-25", // 2 хоногийн дараа
+    dueDate: "2026-03-25", 
     daysLeft: 2,
     priority: "High",
     color: "#FF4B4B"

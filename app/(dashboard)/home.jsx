@@ -4,7 +4,7 @@ import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText";
-import ThemedBar from "../../components/ThemedBar"; // Чиний шинэ компонент
+import ThemedBar from "../../components/ThemedBar"; 
 import { WEEKLY_SCHEDULE, UPCOMING_DEADLINES } from "../../data/MockData";
 import Spacer from "../../components/Spacer";
 
@@ -45,13 +45,11 @@ const Home = () => {
                 </View>
               }
             >
-              {/* Кредит баруун дээд буланд */}
               <View style={styles.creditBadge}>
                 <ThemedText style={styles.creditLabel}>Кредит</ThemedText>
                 <ThemedText style={styles.creditValue}>{lesson.credit}</ThemedText>
               </View>
 
-              {/* Хичээлийн мэдээлэл */}
               <View style={styles.lessonInfoContainer}>
                 <ThemedText style={styles.lessonTitle}>{lesson.name}</ThemedText>
                 <ThemedText style={styles.subText}>
@@ -59,7 +57,6 @@ const Home = () => {
                 </ThemedText>
               </View>
 
-              {/* Онооны хэсэг */}
               <ScrollView 
                 horizontal 
                 showsHorizontalScrollIndicator={false} 
@@ -95,26 +92,25 @@ const Home = () => {
         >
           {UPCOMING_DEADLINES.map((item) => (
             <ThemedBar 
-            key={item.id} 
-            style={styles.deadlineBar}
-            onPress={() => {}} // Бие даалт руу орох бол
-          >
-            {/* Зүүн талын өнгөт зураас */}
-            <View style={[styles.priorityLine, { backgroundColor: item.color }]} />
-          
-            {/* Бүх текстийг нэг View-д багцалснаар row бүтцэд орохгүй, дээрээсээ доошоо харагдана */}
-            <View style={{ flex: 1, flexDirection: 'column', alignItems: 'flex-start' }}>
-              <ThemedText style={styles.deadlineSubject}>{item.subject}</ThemedText>
-              <ThemedText style={styles.deadlineTask} numberOfLines={1}>{item.task}</ThemedText>
+              key={item.id} 
+              style={styles.deadlineBar}
+              onPress={() => {}} 
+            >
+              {/* Зүүн талын өнгөт зураас */}
+              <View style={[styles.priorityLine, { backgroundColor: item.color }]} />
               
-              <View style={styles.deadlineFooter}>
-                <Ionicons name="time-outline" size={14} color={item.color} />
-                <ThemedText style={[styles.daysLeftText, { color: item.color }]}>
-                  {item.daysLeft} хоног үлдлээ
-                </ThemedText>
+              <View style={styles.deadlineContent}>
+                <ThemedText style={styles.deadlineSubject}>{item.subject}</ThemedText>
+                <ThemedText style={styles.deadlineTask} numberOfLines={1}>{item.task}</ThemedText>
+                
+                <View style={styles.deadlineFooter}>
+                  <Ionicons name="time-outline" size={14} color={item.color} />
+                  <ThemedText style={[styles.daysLeftText, { color: item.color }]}>
+                    {item.daysLeft} хоног үлдлээ
+                  </ThemedText>
+                </View>
               </View>
-            </View>
-          </ThemedBar>
+            </ThemedBar>
           ))}
         </ScrollView>
 
@@ -129,7 +125,6 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: 18, fontWeight: 'bold' },
   dateText: { fontSize: 13, color: '#888' },
   
-  // Lesson Card Styles
   lessonBar: {
     marginBottom: 20,
     elevation: 3,
@@ -138,7 +133,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 10,
     paddingRight: 10,
-    alignItems: 'flex-start', // Оноог доор нь харуулахын тулд
+    alignItems: 'flex-start', 
   },
   typeIconBox: { width: 44, height: 44, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
   lessonInfoContainer: { marginBottom: 15 },
@@ -171,17 +166,30 @@ const styles = StyleSheet.create({
   },
   scoreValue: { fontSize: 13, fontWeight: 'bold' },
   scoreLabel: { fontSize: 10, color: '#666', textAlign: 'center' },
-
-  // Deadline Styles
+  
   deadlineList: { paddingRight: 20 },
   deadlineBar: {
-    width: 200,
+    width: 240, 
     marginRight: 15,
-    paddingLeft: 20, // priorityLine-д зай гаргах
+    paddingLeft: 0, 
+    paddingVertical: 12,
     overflow: 'hidden',
     elevation: 2,
+    flexDirection: 'row',
   },
-  priorityLine: { position: 'absolute', left: 0, top: 0, bottom: 0, width: 5 },
+  priorityLine: { 
+    position: 'absolute', 
+    left: 0, 
+    top: -9, 
+    bottom: -9, 
+    width: 6
+  },
+  deadlineContent: {
+    flex: 1,
+    paddingLeft: 20, 
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  },
   deadlineSubject: { fontSize: 11, color: '#888', marginBottom: 2 },
   deadlineTask: { fontSize: 14, fontWeight: 'bold', marginBottom: 8 },
   deadlineFooter: { flexDirection: 'row', alignItems: 'center' },
