@@ -1,4 +1,3 @@
-import React from "react";
 import { StyleSheet, View, useColorScheme, Pressable } from "react-native";
 import { Colors } from "../constants/Colors";
 import ThemedText from "./ThemedText";
@@ -23,22 +22,20 @@ const ThemedBar = ({
                     backgroundColor: theme.uiBackground,
                     borderRadius: 15,
                     padding: 15,
-                    flexDirection: 'row',
-                    alignItems: 'center',
+                    
                 }, 
+                styles.defaultBar, 
                 pressed && onPress && styles.pressed, 
                 style
             ]}
             {...props}
         >
-            {/* Икон хэсэг */}
             {icon && (
                 <View style={styles.iconContainer}>
                     {icon}
                 </View>
             )}
 
-            {/* Текст болон children хэсэг */}
             <View style={styles.contentContainer}>
                 {title && (
                     <ThemedText title={true} style={styles.titleStyle}>
@@ -58,6 +55,10 @@ const ThemedBar = ({
 };
 
 const styles = StyleSheet.create({
+    defaultBar: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
     iconContainer: {
         marginRight: 15,
     },
@@ -74,8 +75,8 @@ const styles = StyleSheet.create({
         marginTop: 2,
     },
     pressed: {
-        opacity: 0.7, // Дарагдах үед бага зэрэг бүдгэрнэ
-        transform: [{ scale: 0.98 }] // Бага зэрэг жижигрэх эффект нэмэв
+        opacity: 0.7, 
+        transform: [{ scale: 0.98 }] 
     }
 });
 

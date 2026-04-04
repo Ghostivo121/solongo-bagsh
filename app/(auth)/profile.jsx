@@ -1,186 +1,163 @@
 import React from "react";
-import { StyleSheet, View, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity, ScrollView, useColorScheme } from "react-native";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText";
-import ThemedBar from "../../components/ThemedBar"; // Чиний шинэ компонент
-import { WEEKLY_SCHEDULE, UPCOMING_DEADLINES } from "../../data/MockData";
+import { Colors } from "../../constants/Colors";
+import { USER_DATA } from "../../data/MockData";
 import Spacer from "../../components/Spacer";
+import ThemedButton from "../../components/ThemedButton";
 
-const Home = () => {
+const Profile = () => {
   const router = useRouter();
-  const dayKey = "day1"; 
-  const todaysLessons = WEEKLY_SCHEDULE[dayKey] || [];
+  const colorScheme = useColorScheme();
+  const theme = Colors[colorScheme] ?? Colors.light;
 
-  const getTypeStyles = (type) => {
-    switch (type) {
-      case 'Lecture': return { color: '#4CAF50', bg: '#E8F5E9', icon: 'journal' };
-      case 'Laboratory': return { color: '#2196F3', bg: '#E3F2FD', icon: 'flask' };
-      case 'Seminar': return { color: '#FF9800', bg: '#FFF3E0', icon: 'people' };
-      default: return { color: '#9E9E9E', bg: '#F5F5F5', icon: 'book' };
-    }
+  const handleLogout = () => {
+    router.replace("/(auth)/studentLogin");
   };
 
   return (
     <ThemedView style={styles.container}>
-      <Spacer height={10} />
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 30 }}>
-        
-        {/* Өнөөдрийн хуваарь гарчиг */}
-        <View style={styles.headerRow}>
-          <ThemedText title={true} style={styles.sectionTitle}>Өнөөдрийн хуваарь</ThemedText>
-          <ThemedText style={styles.dateText}>2026.03.23 (Даваа)</ThemedText>
+
+      <View style={styles.headerBar}>
+        <TouchableOpacity onPress={() => router.back()}>
+          <Ionicons name="arrow-back" size={26} color={Colors.primary} />
+        </TouchableOpacity>
+        <ThemedText title={true} style={styles.headerTitle}>Хувийн мэдээлэл</ThemedText>
+        <View style={{ width: 26 }} />
+      </View>
+
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 40 }}>
+    
+        <View style={styles.profileSection}>
+          <View style={styles.imageWrapper}>
+            <Image 
+              source={USER_DATA.profileImage} 
+              style={styles.largeProfileImg} 
+            />
+            <TouchableOpacity style={styles.editIcon}>
+              <Ionicons name="camera" size={18} color="white" />
+            </TouchableOpacity>
+          </View>
         </View>
 
-        {todaysLessons.map((lesson) => {
-          const stylesConfig = getTypeStyles(lesson.type);
-          return (
-            <ThemedBar 
-              key={lesson.id}
-              style={styles.lessonBar}
-              icon={
-                <View style={[styles.typeIconBox, { backgroundColor: stylesConfig.bg }]}>
-                  <Ionicons name={stylesConfig.icon} size={22} color={stylesConfig.color} />
-                </View>
-              }
-            >
-              {/* Кредит баруун дээд буланд */}
-              <View style={styles.creditBadge}>
-                <ThemedText style={styles.creditLabel}>Кредит</ThemedText>
-                <ThemedText style={styles.creditValue}>{lesson.credit}</ThemedText>
-              </View>
+        <Spacer height={20} />
 
-              {/* Хичээлийн мэдээлэл */}
-              <View style={styles.lessonInfoContainer}>
-                <ThemedText style={styles.lessonTitle}>{lesson.name}</ThemedText>
-                <ThemedText style={styles.subText}>
-                  {lesson.startTime} • {lesson.room} • {lesson.type}
-                </ThemedText>
-              </View>
-
-              {/* Онооны хэсэг */}
-              <ScrollView 
-                horizontal 
-                showsHorizontalScrollIndicator={false} 
-                contentContainerStyle={styles.scoreContainer}
-              >
-                {lesson.scores.map((score) => (
-                  <TouchableOpacity 
-                    key={score.id} 
-                    style={styles.scoreWrapper}
-                    onPress={() => router.push("/grade")}
-                    activeOpacity={0.7}
-                  >
-                    <View style={[styles.circle, { borderColor: score.color }]}>
-                      <ThemedText style={styles.scoreValue}>{score.value}{score.unit === '%' ? '%' : ''}</ThemedText>
-                    </View>
-                    <ThemedText style={styles.scoreLabel}>{score.label}</ThemedText>
-                  </TouchableOpacity>
-                ))}
-              </ScrollView>
-            </ThemedBar>
-          );
-        })}
-
-        {/* Бие даалтын хугацаа */}
-        <View style={[styles.headerRow, { marginTop: 10 }]}>
-          <ThemedText style={styles.sectionTitle} title={true}>Бие даалтын хугацаа</ThemedText>
+        <View style={styles.sectionContainer}>
+          <ThemedText style={styles.sectionLabel}>Үндсэн мэдээлэл</ThemedText>
+          <ProfileItem label="Овог нэр" value={`${USER_DATA.lastName} ${USER_DATA.firstName}`} />
+          <ProfileItem label="Элссэн он" value={USER_DATA.admissionYear} />
         </View>
 
-        <ScrollView 
-          horizontal 
-          showsHorizontalScrollIndicator={false} 
-          contentContainerStyle={styles.deadlineList}
-        >
-          {UPCOMING_DEADLINES.map((item) => (
-            <ThemedBar 
-              key={item.id} 
-              style={styles.deadlineBar}
-              onPress={() => {}} // Бие даалт руу орох бол
-            >
-              <View style={[styles.priorityLine, { backgroundColor: item.color }]} />
-              <ThemedText style={styles.deadlineSubject}>{item.subject}</ThemedText>
-              <ThemedText style={styles.deadlineTask} numberOfLines={1}>{item.task}</ThemedText>
-              
-              <View style={styles.deadlineFooter}>
-                <Ionicons name="time-outline" size={14} color={item.color} />
-                <ThemedText style={[styles.daysLeftText, { color: item.color }]}>
-                  {item.daysLeft} хоног үлдлээ
-                </ThemedText>
-              </View>
-            </ThemedBar>
-          ))}
-        </ScrollView>
+        <View style={styles.sectionContainer}>
+          <ThemedText style={styles.sectionLabel}>Холбоо барих</ThemedText>
+          <ProfileItem label="Цахим шуудан" value={USER_DATA.email} />
+          <ProfileItem label="Оюутны код" value={USER_DATA.studentCode} />
+        </View>
+
+        <View style={styles.sectionContainer}>
+          <ThemedText style={styles.sectionLabel}>Сургуулийн мэдээлэл</ThemedText>
+          <ProfileItem label="Анги" value={USER_DATA.class} />
+          <ProfileItem label="Тэнхим" value={USER_DATA.department} />
+          <ProfileItem label="Төлөв" value={USER_DATA.status} />
+        </View>
+
+        <Spacer height={30} />
+             
+        <ThemedButton 
+          title="Системээс гарах" 
+          onPress={handleLogout}
+          style={styles.logoutBtnCustom}
+        />
 
       </ScrollView>
     </ThemedView>
   );
 };
 
+const ProfileItem = ({ label, value }) => (
+  <View style={styles.itemWrapper}>
+    <ThemedText style={styles.itemLabel}>{label}</ThemedText>
+    <View style={styles.itemValueBox}>
+      <ThemedText style={styles.itemValue}>{value}</ThemedText>
+    </View>
+  </View>
+);
+
 const styles = StyleSheet.create({
-  container: { flex: 1, paddingHorizontal: 20 },
-  headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: 15 },
-  sectionTitle: { fontSize: 18, fontWeight: 'bold' },
-  dateText: { fontSize: 13, color: '#888' },
-  
-  // Lesson Card Styles
-  lessonBar: {
-    marginBottom: 20,
-    elevation: 3,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    paddingRight: 10,
-    alignItems: 'flex-start', // Оноог доор нь харуулахын тулд
+  container: { 
+    flex: 1, 
+    paddingHorizontal: 20 
   },
-  typeIconBox: { width: 44, height: 44, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
-  lessonInfoContainer: { marginBottom: 15 },
-  lessonTitle: { fontSize: 16, fontWeight: 'bold' },
-  subText: { fontSize: 12, color: '#777', marginTop: 2 },
-  
-  creditBadge: {
+  headerBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 15,
+  },
+  headerTitle: { 
+    fontSize: 18, 
+    fontWeight: 'bold' 
+  },
+  profileSection: { 
+    alignItems: 'center', 
+    marginTop: 10 
+  },
+  imageWrapper: { 
+    position: 'relative' 
+  },
+  largeProfileImg: { 
+    width: 100, 
+    height: 100, 
+    borderRadius: 50, 
+    borderWidth: 1, 
+    borderColor: '#ddd' 
+  },
+  editIcon: {
     position: 'absolute',
-    top: 15,
-    right: 15,
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.03)',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 10,
-  },
-  creditLabel: { fontSize: 7, color: '#888', textTransform: 'uppercase' },
-  creditValue: { fontSize: 14, fontWeight: 'bold' },
-
-  scoreContainer: { paddingVertical: 5, marginTop: 5 },
-  scoreWrapper: { alignItems: 'center', marginRight: 20, width: 65 },
-  circle: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    bottom: 0,
+    right: 0,
+    backgroundColor: Colors.primary,
+    padding: 6,
+    borderRadius: 15,
     borderWidth: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 4,
+    borderColor: 'white',
   },
-  scoreValue: { fontSize: 13, fontWeight: 'bold' },
-  scoreLabel: { fontSize: 10, color: '#666', textAlign: 'center' },
-
-  // Deadline Styles
-  deadlineList: { paddingRight: 20 },
-  deadlineBar: {
-    width: 200,
-    marginRight: 15,
-    paddingLeft: 20, // priorityLine-д зай гаргах
-    overflow: 'hidden',
-    elevation: 2,
+  sectionContainer: { 
+    marginTop: 20 
   },
-  priorityLine: { position: 'absolute', left: 0, top: 0, bottom: 0, width: 5 },
-  deadlineSubject: { fontSize: 11, color: '#888', marginBottom: 2 },
-  deadlineTask: { fontSize: 14, fontWeight: 'bold', marginBottom: 8 },
-  deadlineFooter: { flexDirection: 'row', alignItems: 'center' },
-  daysLeftText: { fontSize: 11, fontWeight: '600', marginLeft: 4 }
+  sectionLabel: { 
+    fontSize: 16, 
+    fontWeight: 'bold', 
+    marginBottom: 10 
+  },
+  itemWrapper: { 
+    marginBottom: 15 
+  },
+  itemLabel: { 
+    fontSize: 13, 
+    opacity: 0.6, 
+    marginBottom: 5, 
+    marginLeft: 5 
+  },
+  itemValueBox: {
+    backgroundColor: '#F8F9FA',
+    borderWidth: 1,
+    borderColor: '#EEE',
+    borderRadius: 12,
+    paddingHorizontal: 15,
+    paddingVertical: 12,
+  },
+  itemValue: { 
+    fontSize: 15, 
+    fontWeight: '500' 
+  },
+  logoutBtnCustom: {
+    backgroundColor: Colors.warning,
+    marginTop: 10,
+  }
 });
 
-export default Home;
+export default Profile;

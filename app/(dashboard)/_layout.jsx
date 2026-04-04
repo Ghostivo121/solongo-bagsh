@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { useColorScheme, View, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { useColorScheme, View, Image, TouchableOpacity, StyleSheet, DeviceEventEmitter } from "react-native";
 import { Colors } from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import ThemedText from "../../components/ThemedText";
@@ -21,14 +21,6 @@ export default function DashboardLayout() {
         },
         headerTitleAlign: 'center', 
         headerShadowVisible: true,
-        headerRight: () => (
-          <View style={styles.headerRightContainer}>
-            <TouchableOpacity style={styles.iconWrapper}>
-              <Ionicons name="notifications" size={22} color="white" />
-              <View style={styles.dot} />
-            </TouchableOpacity>
-          </View>
-        ),
         tabBarStyle: { 
           backgroundColor: theme.navBackground, 
           paddingTop: 5, 
@@ -58,6 +50,17 @@ export default function DashboardLayout() {
               </View>
             </TouchableOpacity>
           ),
+          headerRight: () => (
+            <View style={styles.headerRightContainer}>
+              <TouchableOpacity 
+                style={styles.iconWrapper} 
+                onPress={() => DeviceEventEmitter.emit('openTodoModal')}
+                activeOpacity={0.6}
+              >
+                <Ionicons name="add-circle" size={30} color="white" />
+              </TouchableOpacity>
+            </View>
+          ),
           tabBarIcon: ({ focused }) => (
             <Ionicons size={24} name={focused ? 'home' : 'home-outline'} color={focused ? theme.iconColorFocused : theme.iconColor} />
           )
@@ -65,7 +68,7 @@ export default function DashboardLayout() {
       />
       
       <Tabs.Screen 
-        name="grade"
+        name="grade" 
         options={{ 
           title: "Дүн", 
           headerTitleStyle: { color: 'white', fontWeight: 'bold', fontSize: 18 },
@@ -76,18 +79,18 @@ export default function DashboardLayout() {
       />
       
       <Tabs.Screen 
-        name="attendance"
+        name="attendance" 
         options={{ 
           title: "Ирц", 
           headerTitleStyle: { color: 'white', fontWeight: 'bold', fontSize: 18 },
           tabBarIcon: ({ focused }) => (
             <Ionicons size={24} name={focused ? 'checkmark-done': 'checkmark-done-outline'} color={focused ? theme.iconColorFocused : theme.iconColor} />
           )
-        }}
+        }} 
       />
 
       <Tabs.Screen 
-        name="lesson"
+        name="lesson" 
         options={{ 
           title: "Хичээл", 
           headerTitleStyle: { color: 'white', fontWeight: 'bold', fontSize: 18 },
@@ -108,45 +111,33 @@ export default function DashboardLayout() {
         }} 
       />
     </Tabs>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  headerLeftContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingLeft: 15,
+  headerLeftContainer: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    paddingLeft: 15 
   },
-  profileImg: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    borderWidth: 1.5,
-    borderColor: 'white',
+  profileImg: { 
+    width: 40, 
+    height: 40, 
+    borderRadius: 20, 
+    borderWidth: 1.5, 
+    borderColor: 'white' },
+  textWrapper: { 
+    marginLeft: 10 
   },
-  textWrapper: {
-    marginLeft: 10,
+  nameText: { 
+    color: 'white', 
+    fontSize: 16, 
+    fontWeight: 'bold' 
   },
-  nameText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
+  headerRightContainer: { 
+    paddingRight: 15 
   },
-  headerRightContainer: {
-    paddingRight: 15,
-  },
-  iconWrapper: {
-    padding: 5,
-  },
-  dot: {
-    position: 'absolute',
-    top: 5,
-    right: 5,
-    width: 8,
-    height: 8,
-    backgroundColor: '#ff4b4b',
-    borderRadius: 4,
-    borderWidth: 1.5,
-    borderColor: 'white',
+  iconWrapper: { 
+    padding: 5 
   }
 });

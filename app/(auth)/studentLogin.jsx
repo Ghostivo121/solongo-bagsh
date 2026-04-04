@@ -12,6 +12,7 @@ import { Colors } from "../../constants/Colors";
 
 const StudentLogin = () => {
     const router = useRouter();
+    
 
     return (
         <ThemedView style={styles.container}>
