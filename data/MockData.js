@@ -27,14 +27,15 @@ export const CURRENT_LESSONS = [
         max: 10, 
         color: "#4CAF50",
         attendanceDetails: [
-          { date: "03.01", type: "Lecture", status: true },
-          { date: "03.03", type: "Seminar", status: true },
-          { date: "03.08", type: "Lecture", status: false },
-          { date: "03.10", type: "Seminar", status: true },
+          { date: "03.01", type: "Лекц", status: true },
+          { date: "03.03", type: "Семинар", status: true },
+          { date: "03.08", type: "Лекц", status: false },
+          { date: "03.10", type: "Семинар", status: true },
         ]
       },
       { id: "s2", label: "Явц 1", value: 20, max: 30, color: "#2196F3" },
       { id: "s3", label: "Бие даалт", value: 15, max: 20, color: "#FF9800" },
+      {id: "s5", label: "бие даалт 2", value: 18, max: 20, color: "#FF9800" },  
       { id: "s4", label: "Шалгалт", value: 40, max: 40, color: "#F44336" },
     ]
   },
@@ -52,8 +53,8 @@ export const CURRENT_LESSONS = [
         max: 10, 
         color: "#4CAF50",
         attendanceDetails: [
-          { date: "03.02", type: "Lecture", status: true },
-          { date: "03.04", type: "Lab", status: true },
+          { date: "03.02", type: "Лекц", status: true },
+          { date: "03.04", type: "Лаборатори", status: true },
         ]
       },
       { id: "s2", label: "Lab 1", value: 10, max: 10, color: "#2196F3" },
@@ -116,30 +117,30 @@ export const CURRENT_LESSONS = [
 
 export const WEEKLY_SCHEDULE = {
   day1: [ 
-    { id: "1", lessonId: "math_101", startTime: "08:20", type: "Lecture", room: "712" },
-    { id: "2", lessonId: "mobile_301", startTime: "10:00", type: "Lab", room: "914" },
-    { id: "3", lessonId: "py_201", startTime: "11:40", type: "Lecture", room: "809" },
+    { id: "1", lessonId: "math_101", startTime: "08:20", type: "Лекц", room: "712" },
+    { id: "2", lessonId: "mobile_301", startTime: "10:00", type: "Лаб", room: "914" },
+    { id: "3", lessonId: "py_201", startTime: "11:40", type: "Лекц", room: "809" },
     
   ],
   day2: [ 
-    { id: "4", lessonId: "swe_401", startTime: "10:00", type: "Lecture", room: "712" },
-    { id: "5", lessonId: "net_302", startTime: "11:40", type: "Lab", room: "912" },
-    { id: "6", lessonId: "math_101", startTime: "14:00", type: "Seminar", room: "709" },
+    { id: "4", lessonId: "swe_401", startTime: "10:00", type: "Лекц", room: "712" },
+    { id: "5", lessonId: "net_302", startTime: "11:40", type: "Лаб", room: "912" },
+    { id: "6", lessonId: "math_101", startTime: "14:00", type: "Семинар", room: "709" },
   ],
   day3: [ 
-    { id: "7", lessonId: "cyber_402", startTime: "10:00", type: "Lecture", room: "809" },
-    { id: "8", lessonId: "res_410", startTime: "11:40", type: "Lecture", room: "712" },
-    { id: "9", lessonId: "mobile_301", startTime: "14:00", type: "Lecture", room: "809" },
+    { id: "7", lessonId: "cyber_402", startTime: "10:00", type: "Лекц", room: "809" },
+    { id: "8", lessonId: "res_410", startTime: "11:40", type: "Лекц", room: "712" },
+    { id: "9", lessonId: "mobile_301", startTime: "14:00", type: "Лекц", room: "809" },
   ],
   day4: [
-    { id: "10", lessonId: "py_201", startTime: "10:00", type: "Lab", room: "913" },
-    { id: "11", lessonId: "swe_401", startTime: "11:40", type: "Seminar", room: "910" },
-    { id: "12", lessonId: "net_302", startTime: "14:00", type: "Lecture", room: "712" },
+    { id: "10", lessonId: "py_201", startTime: "10:00", type: "Лаб", room: "913" },
+    { id: "11", lessonId: "swe_401", startTime: "11:40", type: "Семинар", room: "910" },
+    { id: "12", lessonId: "net_302", startTime: "14:00", type: "Лекц", room: "712" },
   ],
   day5: [ 
-    { id: "13", lessonId: "cyber_402", startTime: "10:00", type: "Lab", room: "912" },
-    { id: "14", lessonId: "res_410", startTime: "11:40", type: "Seminar", room: "910" },
-    { id: "15", lessonId: "mobile_301", startTime: "14:00", type: "Lab", room: "912" },
+    { id: "13", lessonId: "cyber_402", startTime: "10:00", type: "Лаб", room: "912" },
+    { id: "14", lessonId: "res_410", startTime: "11:40", type: "Семинар", room: "910" },
+    { id: "15", lessonId: "mobile_301", startTime: "14:00", type: "Лаб", room: "912" },
   ],
 };
 

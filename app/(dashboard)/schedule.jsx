@@ -29,9 +29,9 @@ const ScheduleScreen = () => {
 
   const getTypeColor = (type) => {
     switch(type) {
-      case 'Lecture': return '#4CAF50';
-      case 'Lab': return '#FF9800';
-      case 'Seminar': return '#2196F3';
+      case 'Лекц': return '#4CAF50';
+      case 'Лаб': return '#FF9800';
+      case 'Семинар': return '#2196F3';
       default: return '#888';
     }
   };

@@ -14,7 +14,7 @@ const Home = () => {
         <ThemedView style={styles.container}>
             
             <View style={styles.logoContainer}>
-                <ThemedLogo style={styles.img} />
+                <ThemedLogo style={styles.img}/>
             </View>
 
             

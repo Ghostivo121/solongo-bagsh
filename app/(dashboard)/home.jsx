@@ -76,9 +76,9 @@ const Home = () => {
 
   const getTypeStyles = (type) => {
     switch (type) {
-      case 'Lecture': return { color: '#4CAF50', bg: '#E8F5E9', icon: 'journal' };
-      case 'Lab': return { color: '#2196F3', bg: '#E3F2FD', icon: 'flask' };
-      case 'Seminar': return { color: '#FF9800', bg: '#FFF3E0', icon: 'people' };
+      case 'Лекц': return { color: '#4CAF50', bg: '#E8F5E9', icon: 'journal' };
+      case 'Лаб': return { color: '#2196F3', bg: '#E3F2FD', icon: 'flask' };
+      case 'Семинар': return { color: '#FF9800', bg: '#FFF3E0', icon: 'people' };
       default: return { color: '#9E9E9E', bg: '#F5F5F5', icon: 'book' };
     }
   };
@@ -271,11 +271,12 @@ const styles = StyleSheet.create({
     color: '#999' 
   },
   lessonBar: { 
-    marginBottom: 20, 
+    marginBottom: 12, 
     padding: 15, 
     backgroundColor: '#FFF', 
     borderRadius: 15,
-    levation: 3 
+    elevation: 3 
+  
   },
   typeIconBox: { 
     width: 44, 
@@ -289,7 +290,9 @@ const styles = StyleSheet.create({
   },
   lessonTitle: { 
     fontSize: 16, 
-    fontWeight: 'bold' 
+    fontWeight: 'bold', 
+    width: 200,
+    
   },
   subText: { 
     fontSize: 12, 
@@ -343,26 +346,27 @@ const styles = StyleSheet.create({
     textAlign: 'center' 
   },
   deadlineList: { 
-    paddingRight: 20 
+    paddingRight: 20,
   },
   deadlineBar: { 
     width: 250, 
     marginRight: 15, 
     paddingVertical: 15, 
     backgroundColor: '#FFF', 
+    overflow: 'hidden',
     borderRadius: 15, 
     elevation: 3 
   },
   priorityLine: { 
     position: 'absolute', 
-    left: 0, 
-    top: 0, 
-    bottom: 0, 
-    width: 6 
+    left: -15, 
+    top: -20, 
+    bottom: -20, 
+    width: 7,
   },
   deadlineContent: { 
     flex: 1, 
-    paddingLeft: 20 
+    paddingLeft: 10
   },
   deadlineSubject: { 
     fontSize: 11, 

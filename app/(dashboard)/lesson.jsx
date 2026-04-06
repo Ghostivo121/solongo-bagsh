@@ -51,14 +51,14 @@ const LessonScreen = () => {
                   <ThemedText style={styles.teacherName}>{lesson.teacher} • {lesson.credit} Кредит</ThemedText>
                 </View>
                 <View style={styles.rightInfo}>
-                   <View style={styles.totalScoreBadge}>
+                  <View style={styles.totalScoreBadge}>
                       <ThemedText style={styles.totalScore}>{lesson.totalScore}</ThemedText>
-                   </View>
-                   <Ionicons 
+                  </View>
+                  <Ionicons 
                     name={expandedLesson === lesson.id ? "chevron-up" : "chevron-down"} 
                     size={20} 
                     color="#888" 
-                   />
+                  />
                 </View>
               </View>
 
