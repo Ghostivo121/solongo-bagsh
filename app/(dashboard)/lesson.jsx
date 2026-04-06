@@ -69,7 +69,6 @@ const LessonScreen = () => {
                   {lesson.scores.map((score) => (
                     <View key={score.id} style={styles.scoreItem}>
                       <TouchableOpacity 
-                        disabled={score.label !== "Ирц"} 
                         onPress={() => toggleScore(score.id)}
                         style={styles.scoreRow}
                         activeOpacity={0.7}
@@ -78,13 +77,11 @@ const LessonScreen = () => {
                           <ThemedText style={styles.scoreLabel}>{score.label}</ThemedText>
                           <View style={styles.scoreValueContainer}>
                             <ThemedText style={styles.scoreVal}>{score.value}/{score.max}</ThemedText>
-                            {score.label === "Ирц" && (
-                              <Ionicons 
-                                name={expandedScore === score.id ? "chevron-down" : "chevron-forward"} 
-                                size={14} 
-                                color="#888" 
-                              />
-                            )}
+                            <Ionicons 
+                              name={expandedScore === score.id ? "chevron-down" : "chevron-forward"} 
+                              size={14} 
+                              color="#888" 
+                            />
                           </View>
                         </View>
                         <View style={styles.barBg}>
@@ -98,24 +95,20 @@ const LessonScreen = () => {
                       </TouchableOpacity>
 
                       
-                      {score.label === "Ирц" && expandedScore === score.id && (
-                        <View style={styles.attendanceBox}>
-                          {score.attendanceDetails && score.attendanceDetails.length > 0 ? (
-                            score.attendanceDetails.map((att, idx) => (
-                              <View key={idx} style={styles.attRow}>
-                                <View style={styles.attDateBox}>
-                                  <ThemedText style={styles.attDate}>{att.date}</ThemedText>
+                      {expandedScore === score.id && (
+                        <View style={styles.detailsBox}>
+                          {score.subDetails && score.subDetails.length > 0 ? (
+                            score.subDetails.map((detail, idx) => (
+                              <View key={idx} style={styles.detailRow}>
+                                <View style={styles.detailTitleBox}>
+                                  <ThemedText style={styles.detailTitleText}>{detail.title}</ThemedText>
                                 </View>
-                                <ThemedText style={styles.attType}>{att.type}</ThemedText>
-                                <View style={[styles.statusBadge, { backgroundColor: att.status ? '#E8F5E9' : '#FFEBEE' }]}>
-                                  <ThemedText style={[styles.attStatus, { color: att.status ? '#4CAF50' : '#F44336' }]}>
-                                    {att.status ? "Ирсэн" : "Тасалсан"}
-                                  </ThemedText>
-                                </View>
+                                <ThemedText style={styles.detailStatusText}>{detail.status}</ThemedText>
+                                <ThemedText style={styles.detailValueText}>{detail.date}</ThemedText>
                               </View>
                             ))
                           ) : (
-                            <ThemedText style={styles.noData}>Ирцийн мэдээлэл ороогүй байна.</ThemedText>
+                            <ThemedText style={styles.noData}>Мэдээлэл ороогүй байна.</ThemedText>
                           )}
                         </View>
                       )}
@@ -288,6 +281,48 @@ const styles = StyleSheet.create({
     fontSize: 11, 
     color: '#AAA', 
     textAlign: 'center' 
+  },
+  detailsBox: { 
+    backgroundColor: '#FAFAFA', 
+    borderRadius: 12, 
+    padding: 12, 
+    marginTop: 10,
+    borderWidth: 1,
+    borderColor: '#F0F0F0'
+  },
+  detailRow: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    paddingVertical: 10, 
+    borderBottomWidth: 1, 
+    borderBottomColor: '#F0F0F0' 
+  },
+  detailTitleBox: { 
+    flex: 1.5 
+  },
+  detailTitleText: { 
+    fontSize: 12, 
+    fontWeight: '500',
+    color: '#333' 
+  },
+  detailStatusText: { 
+    flex: 1,
+    fontSize: 11, 
+    color: '#666',
+    textAlign: 'center'
+  },
+  detailValueText: { 
+    flex: 0.5,
+    fontSize: 12, 
+    fontWeight: 'bold',
+    textAlign: 'right',
+    color: '#2196F3'
+  },
+  noData: { 
+    fontSize: 11, 
+    color: '#AAA', 
+    textAlign: 'center',
+    paddingVertical: 10
   }
 });
 

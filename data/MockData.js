@@ -23,20 +23,58 @@ export const CURRENT_LESSONS = [
       { 
         id: "s1", 
         label: "Ирц", 
-        value: 10, 
+        value: 9, 
         max: 10, 
         color: "#4CAF50",
-        attendanceDetails: [
-          { date: "03.01", type: "Лекц", status: true },
-          { date: "03.03", type: "Семинар", status: true },
-          { date: "03.08", type: "Лекц", status: false },
-          { date: "03.10", type: "Семинар", status: true },
+        subDetails: [
+          { title: "03.01 Лекц", status: "Ирсэн", date: "1" },
+          { title: "03.03 Семинар", status: "Ирсэн", date: "1" },
+          { title: "03.08 Лекц", status: "Тасалсан", date: "0" },
         ]
       },
-      { id: "s2", label: "Явц 1", value: 20, max: 30, color: "#2196F3" },
-      { id: "s3", label: "Бие даалт", value: 15, max: 20, color: "#FF9800" },
-      {id: "s5", label: "бие даалт 2", value: 18, max: 20, color: "#FF9800" },  
-      { id: "s4", label: "Шалгалт", value: 40, max: 40, color: "#F44336" },
+      {
+        id: "s2",
+        label: "Даалгавар",
+        value: 5,
+        max: 10,
+        color: "#9C27B0",
+        subDetails: [
+          { title: "Даалгавар 1", status: "Хийгдсэн", date: "10/10" },
+        ]
+      },
+      { 
+        id: "s3", 
+        label: "Явц", 
+        value: 20, 
+        max: 30, 
+        color: "#2196F3",
+        subDetails: [
+          { title: "Явц 1", status: "Амжилттай", date: "10/15" },
+          { title: "Явц 2", status: "Дундаж", date: "10/15" },
+        ]
+      },
+      { 
+        id: "s4", 
+        label: "Бие даалт", 
+        value: 15, 
+        max: 20, 
+        color: "#FF9800",
+        subDetails: [
+          { title: "Судалгааны ажил", status: "Хүлээгдэж буй", date: "15/20" },
+          { title: "Төсөл", status: "Хийгдсэн", date: "15/20" },
+        ]
+      },
+      { 
+        id: "s5", 
+        label: "Шалгалт", 
+        value: 30, 
+        max: 30, 
+        color: "#F44336",
+        subDetails: [
+          { title: "Улирлын шалгалт", status: "Онц", date: "30/30" },
+        ]
+      },
+      
     ]
   },
   {
@@ -52,13 +90,44 @@ export const CURRENT_LESSONS = [
         value: 9, 
         max: 10, 
         color: "#4CAF50",
-        attendanceDetails: [
-          { date: "03.02", type: "Лекц", status: true },
-          { date: "03.04", type: "Лаборатори", status: true },
+        subDetails: [
+          { title: "03.01 Лекц", status: "Ирсэн", date: "1" },
+          { title: "03.03 Семинар", status: "Ирсэн", date: "1" },
+          { title: "03.08 Лекц", status: "Тасалсан", date: "0" },
         ]
       },
-      { id: "s2", label: "Lab 1", value: 10, max: 10, color: "#2196F3" },
-      { id: "s3", label: "Төсөл", value: 25, max: 30, color: "#673AB7" },
+      { 
+        id: "s2", 
+        label: "Явц", 
+        value: 20, 
+        max: 30, 
+        color: "#2196F3",
+        subDetails: [
+          { title: "Явц 1", status: "Амжилттай", date: "10/15" },
+          { title: "Явц 2", status: "Дундаж", date: "10/15" },
+        ]
+      },
+      { 
+        id: "s3", 
+        label: "Бие даалт", 
+        value: 15, 
+        max: 20, 
+        color: "#FF9800",
+        subDetails: [
+          { title: "Судалгааны ажил", status: "Хүлээгдэж буй", date: "15/20" },
+          { title: "Төсөл", status: "Хийгдсэн", date: "15/20" },
+        ]
+      },
+      { 
+        id: "s4", 
+        label: "Шалгалт", 
+        value: 30, 
+        max: 30, 
+        color: "#F44336",
+        subDetails: [
+          { title: "Улирлын шалгалт", status: "Онц", date: "30/30" },
+        ]
+      },
     ]
   },
   {
