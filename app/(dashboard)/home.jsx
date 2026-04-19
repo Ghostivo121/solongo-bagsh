@@ -20,13 +20,10 @@ import { Colors } from "../../constants/Colors";
 
 const Home = () => {
   const router = useRouter();
-  
-  // States
   const [modalVisible, setModalVisible] = useState(false);
   const [todoTitle, setTodoTitle] = useState('');
   const [localTodos, setLocalTodos] = useState([]);
 
-  // Апп ачааллах үед AsyncStorage-аас дата унших болон Layout-аас ирэх Event-ийг сонсох
   useEffect(() => {
     loadTodos();
 
@@ -63,16 +60,11 @@ const Home = () => {
     setLocalTodos(updated);
     await AsyncStorage.setItem('user_todos', JSON.stringify(updated));
   };
-
-  const getDayKey = () => {
-    const today = new Date().getDay(); 
-    const days = ['day7', 'day1', 'day2', 'day3', 'day4', 'day5', 'day6'];
-    const currentDay = days[today];
-    return WEEKLY_SCHEDULE[currentDay] ? currentDay : "day1";
-  };
-
-  const dayKey = getDayKey();
-  const todaysSchedule = WEEKLY_SCHEDULE[dayKey] || [];
+  const getDaykey = () => {
+    return "day1";
+  }
+  const daykey = getDaykey();
+  const todaysSchedule = WEEKLY_SCHEDULE[daykey] || [];
 
   const getTypeStyles = (type) => {
     switch (type) {
@@ -110,7 +102,7 @@ const Home = () => {
 
         <View style={styles.headerRow}>
           <ThemedText title={true} style={styles.sectionTitle}>Өнөөдрийн хуваарь</ThemedText>
-          <ThemedText style={styles.dateText}>2026.04.04 (Бямба)</ThemedText>
+          <ThemedText style={styles.dateText}>2026.04.04 (Даваа)</ThemedText>
         </View>
 
         {todaysSchedule.length === 0 && localTodos.length === 0 && (

@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, ScrollView, TouchableOpacity, LayoutAnimation, Platform, UIManager } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import ThemedView from "../../components/ThemedView";
-import ThemedText from "../../components/ThemedText";
+import  ThemedView from "../../components/ThemedView";
+import ThemedText from "../../components/ThemedText"; 
 import { CURRENT_LESSONS } from "../../data/MockData";
-
 
 
 const LessonScreen = () => {
@@ -93,19 +92,35 @@ const LessonScreen = () => {
                           />
                         </View>
                       </TouchableOpacity>
-
                       
                       {expandedScore === score.id && (
                         <View style={styles.detailsBox}>
                           {score.subDetails && score.subDetails.length > 0 ? (
                             score.subDetails.map((detail, idx) => (
-                              <View key={idx} style={styles.detailRow}>
-                                <View style={styles.detailTitleBox}>
-                                  <ThemedText style={styles.detailTitleText}>{detail.title}</ThemedText>
+                              
+                              score.label === "Ирц" ? (
+                                <View key={idx} style={styles.detailRow}>
+                                  <View style={styles.detailTitleBox}>
+                                    <ThemedText style={styles.detailTitleText}>{detail.week}-р 7 хоног ({detail.type})</ThemedText>
+                                    <ThemedText style={styles.detailDateSubText}>{detail.actualDate}</ThemedText>
+                                  </View>
+                                  <ThemedText style={[
+                                    styles.detailStatusText, 
+                                    { color: detail.status === "Ирсэн" ? "#4CAF50" : "#F44336", fontWeight: "bold" }
+                                  ]}>
+                                    {detail.status}
+                                  </ThemedText>
+                                  <ThemedText style={styles.detailValueText}>{detail.value}</ThemedText>
                                 </View>
-                                <ThemedText style={styles.detailStatusText}>{detail.status}</ThemedText>
-                                <ThemedText style={styles.detailValueText}>{detail.date}</ThemedText>
-                              </View>
+                              ) : (
+                                <View key={idx} style={styles.detailRow}>
+                                  <View style={styles.detailTitleBox}>
+                                    <ThemedText style={styles.detailTitleText}>{detail.title}</ThemedText>
+                                  </View>
+                                  <ThemedText style={styles.detailStatusText}>{detail.status}</ThemedText>
+                                  <ThemedText style={styles.detailValueText}>{detail.date}</ThemedText>
+                                </View>
+                              )
                             ))
                           ) : (
                             <ThemedText style={styles.noData}>Мэдээлэл ороогүй байна.</ThemedText>
@@ -240,48 +255,6 @@ const styles = StyleSheet.create({
     height: '100%', 
     borderRadius: 3 
   },
-  attendanceBox: { 
-    backgroundColor: '#FAFAFA', 
-    borderRadius: 12, 
-    padding: 12, 
-    marginTop: 10,
-    borderWidth: 1,
-    borderColor: '#F0F0F0'
-  },
-  attRow: { 
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    paddingVertical: 8, 
-    borderBottomWidth: 1, 
-    borderBottomColor: '#F0F0F0' 
-  },
-  attDateBox: { 
-    width: 45 
-  },
-  attDate: { 
-    fontSize: 12, 
-    color: '#888' 
-  },
-  attType: { 
-    flex: 1, 
-    fontSize: 12, 
-    color: '#444', 
-    marginLeft: 5 
-  },
-  statusBadge: { 
-    paddingHorizontal: 8, 
-    paddingVertical: 2, 
-    borderRadius: 6 
-  },
-  attStatus: { 
-    fontSize: 11, 
-    fontWeight: 'bold' 
-  },
-  noData: { 
-    fontSize: 11, 
-    color: '#AAA', 
-    textAlign: 'center' 
-  },
   detailsBox: { 
     backgroundColor: '#FAFAFA', 
     borderRadius: 12, 
@@ -304,6 +277,11 @@ const styles = StyleSheet.create({
     fontSize: 12, 
     fontWeight: '500',
     color: '#333' 
+  },
+  detailDateSubText: {
+    fontSize: 10, 
+    color: '#888', 
+    marginTop: 2
   },
   detailStatusText: { 
     flex: 1,

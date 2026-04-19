@@ -65,7 +65,7 @@ const Profile = () => {
         </View>
 
         <Spacer height={30} />
-             
+        
         <ThemedButton 
           title="Системээс гарах" 
           onPress={handleLogout}

@@ -1,17 +1,16 @@
-
 export const USER_DATA = {
-    id: "1",
-    lastName: "Сод-Эрдэнэ",     
-    firstName: "Дагвадорж",      
-    email: "se22d11@nmit.edu.mn",
-    studentCode: "SE22D11",
-    class: "Программ хангамж-3", 
-    department: "Компьютерийн ухааны тэнхим", 
-    status: "Идэвхтэй",        
-    profileImage: require("../assets/img/icon.png"), 
-    admissionYear: "2022",     
-  };
-  
+  id: "1",
+  lastName: "Сод-Эрдэнэ",
+  firstName: "Дагвадорж",
+  email: "se22d11@nmit.edu.mn",
+  studentCode: "SE22D11",
+  class: "Программ хангамж-3",
+  department: "Компьютерийн ухааны тэнхим",
+  status: "Идэвхтэй",
+  profileImage: require("../assets/img/icon.png"),
+  admissionYear: "2022",
+};
+
 export const CURRENT_LESSONS = [
   {
     id: "math_101",
@@ -20,16 +19,38 @@ export const CURRENT_LESSONS = [
     credit: 3,
     totalScore: 85,
     scores: [
-      { 
-        id: "s1", 
-        label: "Ирц", 
-        value: 9, 
-        max: 10, 
+      {
+        id: "s1",
+        label: "Ирц",
+        value: 9,
+        max: 10,
         color: "#4CAF50",
         subDetails: [
-          { title: "03.01 Лекц", status: "Ирсэн", date: "1" },
-          { title: "03.03 Семинар", status: "Ирсэн", date: "1" },
-          { title: "03.08 Лекц", status: "Тасалсан", date: "0" },
+          { week: 1, type: "Лекц", actualDate: "2026-02-02", status: "Ирсэн", value: "1" },
+          { week: 1, type: "Семинар", actualDate: "2026-02-04", status: "Ирсэн", value: "1" },
+          { week: 2, type: "Лекц", actualDate: "2026-02-09", status: "Ирсэн", value: "1" },
+          { week: 2, type: "Семинар", actualDate: "2026-02-11", status: "Тасалсан", value: "0" },
+          { week: 3, type: "Лекц", actualDate: "2026-02-16", status: "Ирсэн", value: "1" },
+          { week: 3, type: "Семинар", actualDate: "2026-02-18", status: "Ирсэн", value: "1" },
+          { week: 4, type: "Лекц", actualDate: "2026-02-23", status: "Ирсэн", value: "1" },
+          { week: 4, type: "Семинар", actualDate: "2026-02-25", status: "Ирсэн", value: "1" },
+          { week: 5, type: "Лекц", actualDate: "2026-03-02", status: "Тасалсан", value: "0" },
+          { week: 5, type: "Семинар", actualDate: "2026-03-04", status: "Ирсэн", value: "1" },
+          { week: 6, type: "Лекц", actualDate: "2026-03-09", status: "Ирсэн", value: "1" },
+          { week: 6, type: "Семинар", actualDate: "2026-03-11", status: "Ирсэн", value: "1" },
+          { week: 7, type: "Лекц", actualDate: "2026-03-16", status: "Ирсэн", value: "1" },
+          { week: 7, type: "Семинар", actualDate: "2026-03-18", status: "Ирсэн", value: "1" },
+          { week: 8, type: "Лекц", actualDate: "2026-03-23", status: "Ирсэн", value: "1" },
+          { week: 9, type: "Лекц", actualDate: "2026-03-30", status: "Ирсэн", value: "1" },
+          { week: 10, type: "Лекц", actualDate: "2026-04-06", status: "Ирсэн", value: "1" },
+          { week: 10, type: "Семинар", actualDate: "2026-04-08", status: "Тасалсан", value: "0" },
+          { week: 11, type: "Лекц", actualDate: "2026-04-13", status: "Ирсэн", value: "1" },
+          { week: 12, type: "Лекц", actualDate: "2026-04-20", status: "Ирсэн", value: "1" },
+          { week: 13, type: "Лекц", actualDate: "2026-04-27", status: "Ирсэн", value: "1" },
+          { week: 14, type: "Лекц", actualDate: "2026-05-04", status: "Тасалсан", value: "0" },
+          { week: 15, type: "Лекц", actualDate: "2026-05-11", status: "Ирсэн", value: "1" },
+          { week: 16, type: "Лекц", actualDate: "2026-05-18", status: "Ирсэн", value: "1" },
+          { week: 16, type: "Семинар", actualDate: "2026-05-20", status: "Тасалсан", value: "0" },
         ]
       },
       {
@@ -39,42 +60,44 @@ export const CURRENT_LESSONS = [
         max: 10,
         color: "#9C27B0",
         subDetails: [
-          { title: "Даалгавар 1", status: "Хийгдсэн", date: "10/10" },
+          { title: "Даалгавар 1", status: "Хийгдсэн", date: "3" },
+          { title: "Даалгавар 2", status: "Хийгдсэн", date: "3" },
+          { title: "Даалгавар 3", status: "Хийгдсэн", date: "3" },
+          { title: "Даалгавар 4", status: "Хийгдсэн", date: "3" },
         ]
       },
-      { 
-        id: "s3", 
-        label: "Явц", 
-        value: 20, 
-        max: 30, 
+      {
+        id: "s3",
+        label: "Явц",
+        value: 20,
+        max: 30,
         color: "#2196F3",
         subDetails: [
           { title: "Явц 1", status: "Амжилттай", date: "10/15" },
           { title: "Явц 2", status: "Дундаж", date: "10/15" },
         ]
       },
-      { 
-        id: "s4", 
-        label: "Бие даалт", 
-        value: 15, 
-        max: 20, 
+      {
+        id: "s4",
+        label: "Бие даалт",
+        value: 15,
+        max: 20,
         color: "#FF9800",
         subDetails: [
-          { title: "Судалгааны ажил", status: "Хүлээгдэж буй", date: "15/20" },
-          { title: "Төсөл", status: "Хийгдсэн", date: "15/20" },
+          { title: "Судалгааны ажил", status: "Хүлээгдэж буй", date: "5/10" },
+          { title: "Төсөл", status: "Хийгдсэн", date: "10/10" },
         ]
       },
-      { 
-        id: "s5", 
-        label: "Шалгалт", 
-        value: 30, 
-        max: 30, 
+      {
+        id: "s5",
+        label: "Шалгалт",
+        value: 30,
+        max: 30,
         color: "#F44336",
         subDetails: [
           { title: "Улирлын шалгалт", status: "Онц", date: "30/30" },
         ]
       },
-      
     ]
   },
   {
@@ -84,45 +107,74 @@ export const CURRENT_LESSONS = [
     credit: 3,
     totalScore: 92,
     scores: [
-      { 
-        id: "s1", 
-        label: "Ирц", 
-        value: 9, 
-        max: 10, 
+      {
+        id: "s1",
+        label: "Ирц",
+        value: 9,
+        max: 10,
         color: "#4CAF50",
         subDetails: [
-          { title: "03.01 Лекц", status: "Ирсэн", date: "1" },
-          { title: "03.03 Семинар", status: "Ирсэн", date: "1" },
-          { title: "03.08 Лекц", status: "Тасалсан", date: "0" },
+          { week: 1, type: "Лекц", actualDate: "2026-02-02", status: "Ирсэн", value: "1" },
+          { week: 2, type: "Лаб", actualDate: "2026-02-10", status: "Ирсэн", value: "1" },
+          { week: 3, type: "Лекц", actualDate: "2026-02-16", status: "Ирсэн", value: "1" },
+          { week: 4, type: "Лаб", actualDate: "2026-02-24", status: "Ирсэн", value: "1" },
+          { week: 5, type: "Лекц", actualDate: "2026-03-02", status: "Тасалсан", value: "0" },
+          { week: 6, type: "Лаб", actualDate: "2026-03-10", status: "Ирсэн", value: "1" },
+          { week: 7, type: "Лекц", actualDate: "2026-03-16", status: "Ирсэн", value: "1" },
+          { week: 8, type: "Лаб", actualDate: "2026-03-24", status: "Ирсэн", value: "1" },
+          { week: 9, type: "Лекц", actualDate: "2026-03-30", status: "Ирсэн", value: "1" },
+          { week: 10, type: "Лаб", actualDate: "2026-04-07", status: "Тасалсан", value: "0" },
+          { week: 11, type: "Лекц", actualDate: "2026-04-13", status: "Ирсэн", value: "1" },
+          { week: 12, type: "Лаб", actualDate: "2026-04-21", status: "Ирсэн", value: "1" },
+          { week: 13, type: "Лекц", actualDate: "2026-04-27", status: "Ирсэн", value: "1" },
+          { week: 14, type: "Лаб", actualDate: "2026-05-05", status: "Ирсэн", value: "1" },
+          { week: 15, type: "Лекц", actualDate: "2026-05-11", status: "Ирсэн", value: "1" },
+          { week: 16, type: "Лаб", actualDate: "2026-05-19", status: "Ирсэн", value: "1" },
         ]
       },
-      { 
-        id: "s2", 
-        label: "Явц", 
-        value: 20, 
-        max: 30, 
+      {
+        id: "s2",
+        label: "Даалгавар",
+        value: 5,
+        max: 10,
+        color: "#9C27B0",
+        subDetails: [
+          { title: "Даалгавар 1", status: "Хийгдсэн", date: "1" },
+          { title: "Даалгавар 2", status: "Хийгдсэн", date: "1" },
+          { title: "Даалгавар 3", status: "Хийгдсэн", date: "1" },
+          { title: "Даалгавар 4", status: "Хийгдсэн", date: "1" },
+          { title: "Даалгавар 5", status: "Хийгдсэн", date: "1" },
+          { title: "Даалгавар 6", status: "Хийгдсэн", date: "1" },
+
+        ]
+      },
+      {
+        id: "s3",
+        label: "Явц",
+        value: 20,
+        max: 30,
         color: "#2196F3",
         subDetails: [
           { title: "Явц 1", status: "Амжилттай", date: "10/15" },
           { title: "Явц 2", status: "Дундаж", date: "10/15" },
         ]
       },
-      { 
-        id: "s3", 
-        label: "Бие даалт", 
-        value: 15, 
-        max: 20, 
+      {
+        id: "s4",
+        label: "Бие даалт",
+        value: 15,
+        max: 20,
         color: "#FF9800",
         subDetails: [
           { title: "Судалгааны ажил", status: "Хүлээгдэж буй", date: "15/20" },
           { title: "Төсөл", status: "Хийгдсэн", date: "15/20" },
         ]
       },
-      { 
-        id: "s4", 
-        label: "Шалгалт", 
-        value: 30, 
-        max: 30, 
+      {
+        id: "s5",
+        label: "Шалгалт",
+        value: 30,
+        max: 30,
         color: "#F44336",
         subDetails: [
           { title: "Улирлын шалгалт", status: "Онц", date: "30/30" },
@@ -137,7 +189,7 @@ export const CURRENT_LESSONS = [
     credit: 3,
     totalScore: 78,
     scores: [
-      { id: "s1", label: "Ирц", value: 10, max: 10, color: "#4CAF50", attendanceDetails: [] },
+      { id: "s1", label: "Ирц", value: 10, max: 10, color: "#4CAF50", subDetails: [] },
       { id: "s2", label: "Lab", value: 28, max: 30, color: "#2196F3" },
     ]
   },
@@ -148,7 +200,7 @@ export const CURRENT_LESSONS = [
     credit: 3,
     totalScore: 65,
     scores: [
-      { id: "s1", label: "Ирц", value: 7, max: 10, color: "#4CAF50", attendanceDetails: [] },
+      { id: "s1", label: "Ирц", value: 7, max: 10, color: "#4CAF50", subDetails: [] },
       { id: "s2", label: "Шалгалт", value: 40, max: 60, color: "#F44336" },
     ]
   },
@@ -159,7 +211,7 @@ export const CURRENT_LESSONS = [
     credit: 3,
     totalScore: 88,
     scores: [
-      { id: "s1", label: "Ирц", value: 10, max: 10, color: "#4CAF50", attendanceDetails: [] },
+      { id: "s1", label: "Ирц", value: 10, max: 10, color: "#4CAF50", subDetails: [] },
     ]
   },
   {
@@ -169,7 +221,7 @@ export const CURRENT_LESSONS = [
     credit: 3,
     totalScore: 95,
     scores: [
-      { id: "s1", label: "Ирц", value: 10, max: 10, color: "#4CAF50", attendanceDetails: [] },
+      { id: "s1", label: "Ирц", value: 10, max: 10, color: "#4CAF50", subDetails: [] },
     ]
   },
   {
@@ -179,24 +231,23 @@ export const CURRENT_LESSONS = [
     credit: 2,
     totalScore: 70,
     scores: [
-      { id: "s1", label: "Ирц", value: 10, max: 10, color: "#4CAF50", attendanceDetails: [] },
+      { id: "s1", label: "Ирц", value: 10, max: 10, color: "#4CAF50", subDetails: [] },
     ]
   }
 ];
 
 export const WEEKLY_SCHEDULE = {
-  day1: [ 
+  day1: [
     { id: "1", lessonId: "math_101", startTime: "08:20", type: "Лекц", room: "712" },
     { id: "2", lessonId: "mobile_301", startTime: "10:00", type: "Лаб", room: "914" },
     { id: "3", lessonId: "py_201", startTime: "11:40", type: "Лекц", room: "809" },
-    
   ],
-  day2: [ 
+  day2: [
     { id: "4", lessonId: "swe_401", startTime: "10:00", type: "Лекц", room: "712" },
     { id: "5", lessonId: "net_302", startTime: "11:40", type: "Лаб", room: "912" },
     { id: "6", lessonId: "math_101", startTime: "14:00", type: "Семинар", room: "709" },
   ],
-  day3: [ 
+  day3: [
     { id: "7", lessonId: "cyber_402", startTime: "10:00", type: "Лекц", room: "809" },
     { id: "8", lessonId: "res_410", startTime: "11:40", type: "Лекц", room: "712" },
     { id: "9", lessonId: "mobile_301", startTime: "14:00", type: "Лекц", room: "809" },
@@ -206,20 +257,19 @@ export const WEEKLY_SCHEDULE = {
     { id: "11", lessonId: "swe_401", startTime: "11:40", type: "Семинар", room: "910" },
     { id: "12", lessonId: "net_302", startTime: "14:00", type: "Лекц", room: "712" },
   ],
-  day5: [ 
+  day5: [
     { id: "13", lessonId: "cyber_402", startTime: "10:00", type: "Лаб", room: "912" },
     { id: "14", lessonId: "res_410", startTime: "11:40", type: "Семинар", room: "910" },
     { id: "15", lessonId: "mobile_301", startTime: "14:00", type: "Лаб", room: "912" },
   ],
 };
 
-
 export const UPCOMING_DEADLINES = [
   {
     id: "d1",
     subject: "Мобайл програмчлал",
     task: "Бие даалт 1 (UI Design)",
-    dueDate: "2026-03-25", 
+    dueDate: "2026-03-25",
     daysLeft: 2,
     priority: "High",
     color: "#FF4B4B"
@@ -228,7 +278,7 @@ export const UPCOMING_DEADLINES = [
     id: "d2",
     subject: "Компьютер сүлжээ",
     task: "Лабораторийн тайлан №4",
-    dueDate: "2026-03-27", 
+    dueDate: "2026-03-27",
     daysLeft: 4,
     priority: "Medium",
     color: "#FF9800"

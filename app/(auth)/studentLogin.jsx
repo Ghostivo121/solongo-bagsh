@@ -16,7 +16,6 @@ const StudentLogin = () => {
 
     return (
         <ThemedView style={styles.container}>
-            {/* Дээд талын Лого хэсэг */}
             <View style={styles.topSection}>
                 <ThemedLogo style={styles.logo} />
             </View>
@@ -28,7 +27,6 @@ const StudentLogin = () => {
                 
                 <Spacer height={30} />
 
-                {/* Оюутны код хэсэг */}
                 <View style={styles.inputWrapper}>
                     <ThemedText style={styles.label}>Оюутны код</ThemedText>
                     <ThemedInput 
@@ -39,7 +37,6 @@ const StudentLogin = () => {
 
                 <Spacer height={20} />
 
-                {/* Нууц үг хэсэг */}
                 <View style={styles.inputWrapper}>
                     <ThemedText style={styles.label}>Нууц үг</ThemedText>
                     <ThemedInput 
@@ -50,8 +47,6 @@ const StudentLogin = () => {
                 </View>
 
                 <Spacer height={40} />
-
-                {/* Нэвтрэх товч */}
                 <View style={styles.buttonWrapper}>
                     <ThemedButton 
                         title="Нэвтрэх" 
