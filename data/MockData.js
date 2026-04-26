@@ -358,3 +358,89 @@ export const SEMESTER_GRADES = [
     ]
   }
 ];
+export const DEGREE_DATA = {
+  totalCreditsRequired: 120,
+  creditsEarned: 85,
+  categories: [
+    {
+      name: "1-р курс",
+      required: 33,
+      earned: 33,
+      isCompleted: true,
+      completedLessons: [
+        { code: "MAT101", name: "Инженерийн математик I", credit: 3, semester: "1A" },
+        { code: "PHY101", name: "Хэрэглээний физик I", credit: 3, semester: "1A" },
+        { code: "ENG101", name: "Англи хэл I", credit: 3, semester: "1A" },
+        { code: "MNG101", name: "Монгол хэл бичиг, найруулга зүй", credit: 3, semester: "1A" },
+        { code: "DIM101", name: "Гамшгаас хамгаалах менежментийн үндэс", credit: 1, semester: "1A" },
+        { code: "CS100", name: "Инженерийн удиртгал", credit: 2, semester: "1A" },
+        { code: "MAT102", name: "Инженерийн математик II", credit: 3, semester: "1B" },
+        { code: "PHY102", name: "Хэрэглээний физик II", credit: 3, semester: "1B" },
+        { code: "ENG102", name: "Англи хэл II", credit: 3, semester: "1B" },
+        { code: "CHE101", name: "Ерөнхий хими", credit: 3, semester: "1B" },
+        { code: "MNH101", name: "Монголын түүх, соёл, ёс заншил", credit: 3, semester: "1B" },
+        { code: "PHE102", name: "Биеийн тамир II", credit: 1, semester: "1B" },
+        { code: "SE101", name: "Програмчлалын үндэс", credit: 3, semester: "1B" },
+      ],
+      remainingLessons: []
+    },
+    {
+      name: "2-р курс",
+      required: 29,
+      earned: 29,
+      isCompleted: true,
+      completedLessons: [
+        { code: "PHI201", name: "Сэтгэлгээний түүх, соёл", credit: 3, semester: "2A" },
+        { code: "SE201", name: "Холбоост өгөгдлийн сангийн систем", credit: 3, semester: "2A" },
+        { code: "SE202", name: "Объект хандлагат програмчлал", credit: 3, semester: "2A" },
+        { code: "JPN201", name: "Япон хэл I", credit: 2, semester: "2A" },
+        { code: "MAT202", name: "Дискрет математик-I", credit: 3, semester: "2A" },
+        { code: "HUD201", name: "Хүний хөгжил, харилцааны ёс зүй, эрх зүй", credit: 3, semester: "2B" },
+        { code: "SE203", name: "Веб технологи", credit: 3, semester: "2B" },
+        { code: "SE302", name: "Инженерчлэлийн асуудлыг шийдвэрлэх нь", credit: 3, semester: "2B" },
+        { code: "MAT203", name: "Шугаман алгебр", credit: 3, semester: "2B" },
+        { code: "C09.203", name: "Хүн ба компьютерийн харилцааны зохиомж", credit: 3, semester: "2B" },
+      ],
+      remainingLessons: []
+    },
+    {
+      name: "3-р курс",
+      required: 32,
+      earned: 16,
+      isCompleted: false,
+      completedLessons: [
+        { code: "SE301", name: "Веб програмчлал", credit: 3, semester: "3A" },
+        { code: "B09.302", name: "Үйлдлийн системийн онол", credit: 3, semester: "3A" },
+        { code: "C09.404", name: "Програм хангамжийн инженерчлэл", credit: 3, semester: "3A" },
+        { code: "MAT201", name: "Инженерийн математик III", credit: 3, semester: "3A" },
+        { code: "ENG201", name: "Мэргэжлийн англи хэл", credit: 3, semester: "3A" },
+        { code: "SEIN1", name: "Танилцах дадлага", credit: 1, semester: "3A" },
+      ],
+      remainingLessons: [
+        { code: "CS304", name: "Цахим аюулгүй байдал", credit: 3, semester: "3B" },
+        { code: "SE304", name: "Програм хангамжийн шаардлагын шинжилгээ", credit: 3, semester: "3B" },
+        { code: "CS306", name: "Компьютерийн сүлжээ", credit: 3, semester: "3B" },
+        { code: "SE305", name: "Мобайл програмчлал", credit: 3, semester: "3B" },
+        { code: "CS305", name: "Хиймэл оюун ухаан ба машин сургалт", credit: 3, semester: "3B" },
+        { code: "SEUP1", name: "Бакалаврын ахисан түвшний төсөл I", credit: 1, semester: "3B" },
+        { code: "MAT204", name: "Магадлал ба статистик", credit: 3, semester: "3B" },
+      ]
+    },
+    {
+      name: "4-р курс",
+      required: 26,
+      earned: 0,
+      isCompleted: false,
+      completedLessons: [],
+      remainingLessons: [
+        { code: "C09.401", name: "Програм хангамжийн төслийн менежмент", credit: 3, semester: "4A" },
+        { code: "C09.412", name: "Өгөгдлийн олборлолт", credit: 3, semester: "4A" },
+        { code: "C09.403", name: "Өргөн хүрээний системийн хөгжүүлэлт", credit: 3, semester: "4A" },
+        { code: "SEUP2", name: "Програм хангамжийн инженерийн төсөл", credit: 2, semester: "4A" },
+        { code: "SEIN2", name: "Үйлдвэрлэлийн дадлага", credit: 2, semester: "4A" },
+        { code: "SE411", name: "Програм хангамжийн тестчлэл", credit: 3, semester: "4B" },
+        { code: "SEUTH", name: "Бакалаврын судалгааны ажил", credit: 5, semester: "4B" },
+      ]
+    }
+  ]
+};

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, ScrollView, TouchableOpacity, LayoutAnimation, Platform, UIManager } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import  ThemedView from "../../components/ThemedView";
+import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText"; 
 import { CURRENT_LESSONS } from "../../data/MockData";
 
 
 const LessonScreen = () => {
   const { openId } = useLocalSearchParams();
+  const router = useRouter();
   const [expandedLesson, setExpandedLesson] = useState(null);
   const [expandedScore, setExpandedScore] = useState(null);
 
@@ -31,9 +32,20 @@ const LessonScreen = () => {
 
   return (
     <ThemedView style={styles.container}>
-      <View style={styles.header}>
-        <ThemedText title style={styles.headerTitle}>Миний хичээлүүд</ThemedText>
-        <ThemedText style={styles.subHeader}>2025-2026 оны Хаврын семестр</ThemedText>
+      <View style={styles.headerRow}>
+        <View style={styles.header}>
+          <ThemedText title style={styles.headerTitle}>Миний хичээлүүд</ThemedText>
+          <ThemedText style={styles.subHeader}>2025-2026 оны Хаврын семестр</ThemedText>
+        </View>
+
+        <TouchableOpacity 
+          style={styles.planBtn} 
+          onPress={() => router.push("/ProgressDashboard")}
+          activeOpacity={0.7}
+        >
+          <Ionicons name="analytics" size={18} color="#7D1616" />
+          <ThemedText style={styles.planBtnText}>Төлөвлөгөө</ThemedText>
+        </TouchableOpacity>
       </View>
       
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
@@ -145,9 +157,30 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20, 
     backgroundColor: '#F8F9FA' 
   },
-  header: { 
+  // Шинээр нэмэгдсэн хэсэг
+  headerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: 20,
     marginBottom: 15 
+  },
+  header: { 
+    flex: 1
+  },
+  planBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FDECEC',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  planBtnText: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#7D1616',
+    marginLeft: 4,
   },
   headerTitle: { 
     fontSize: 24, 

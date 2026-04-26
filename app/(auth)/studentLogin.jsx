@@ -1,6 +1,7 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, View, Alert } from "react-native";
 import { useRouter } from 'expo-router';
+import * as SQLite from 'expo-sqlite';
 
 import ThemedView from "../../components/ThemedView";
 import ThemedLogo from "../../components/ThemedLogo";
@@ -8,11 +9,67 @@ import ThemedButton from "../../components/ThemedButton";
 import Spacer from "../../components/Spacer";
 import ThemedText from "../../components/ThemedText";
 import ThemedInput from "../../components/ThemedInput"; 
-import { Colors } from "../../constants/Colors";
+
+const db = SQLite.openDatabaseSync('studentDB.db');
 
 const StudentLogin = () => {
     const router = useRouter();
     
+    const [studentCode, setStudentCode] = useState("");
+    const [password, setPassword] = useState("");
+
+    useEffect(() => {
+        try {
+            console.log("DB: Өгөгдлийн санг шалгаж байна...");
+            db.execSync(`
+                CREATE TABLE IF NOT EXISTS users (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                    student_code TEXT, 
+                    password TEXT
+                );
+            `);
+            
+            const result = db.getAllSync('SELECT * FROM users');
+            if (result.length === 0) {
+                console.log("DB: Туршилтын дата нэмж байна...");
+                db.runSync('INSERT INTO users (student_code, password) VALUES (?, ?)', ['se22d11', '12345678']);
+                console.log("DB: Туршилтын дата амжилттай нэмэгдлээ.");
+            }
+        } catch (error) {
+            console.error("DB: Эхлүүлэх явцад алдаа гарлаа:", error);
+        }
+    }, []);
+
+    const handleLogin = () => {
+        if (!studentCode.trim() || !password) {
+            Alert.alert("Алдаа", "Оюутны код болон нууц үгээ оруулна уу.");
+            return;
+        }
+
+        console.log("--- Нэвтрэх оролдлого ---");
+        console.log(`Хэрэглэгчийн код: ${studentCode.trim()}`);
+
+        try {
+            const user = db.getFirstSync(
+                'SELECT * FROM users WHERE student_code = ? AND password = ?',
+                [studentCode.toLowerCase().trim(), password]
+            );
+
+            if (user) {
+                console.log("Төлөв: Амжилттай. Хэрэглэгч олдлоо.");
+                console.log("Дата:", user);
+                router.push("/(dashboard)/home");
+            } else {
+                console.warn("Төлөв: Амжилтгүй. Мэдээлэл таарахгүй байна.");
+                Alert.alert("Нэвтрэх боломжгүй", "Оюутны код эсвэл нууц үг буруу байна.");
+            }
+        } catch (error) {
+            console.error("Төлөв: SQL Алдаа!", error);
+            Alert.alert("Системийн алдаа", "Өгөгдлийн сантай ажиллахад алдаа гарлаа.");
+        } finally {
+            console.log("-----------------------");
+        }
+    }
 
     return (
         <ThemedView style={styles.container}>
@@ -31,7 +88,10 @@ const StudentLogin = () => {
                     <ThemedText style={styles.label}>Оюутны код</ThemedText>
                     <ThemedInput 
                         placeholder="se22d11"
-                        style={styles.customInput} 
+                        style={styles.customInput}
+                        value={studentCode}
+                        onChangeText={setStudentCode}
+                        autoCapitalize="none"
                     />
                 </View>
 
@@ -43,6 +103,8 @@ const StudentLogin = () => {
                         placeholder="********"
                         secureTextEntry
                         style={styles.customInput}
+                        value={password}
+                        onChangeText={setPassword}
                     />
                 </View>
 
@@ -50,7 +112,7 @@ const StudentLogin = () => {
                 <View style={styles.buttonWrapper}>
                     <ThemedButton 
                         title="Нэвтрэх" 
-                        onPress={() => router.push("/(dashboard)/home")}
+                        onPress={handleLogin} 
                         style={styles.loginBtn}
                     />
                 </View>
@@ -89,7 +151,6 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 14,
         marginBottom: 8,
-        opacity: 1,
         fontWeight: '500',
     },
     customInput: {
@@ -97,12 +158,7 @@ const styles = StyleSheet.create({
         height: 60,
         borderRadius: 12,
         backgroundColor: '#F8F9FA',
-        borderWidth: 0,
         paddingHorizontal: 20,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.05,
-        shadowRadius: 5,
         elevation: 2,
     },
     buttonWrapper: { 
