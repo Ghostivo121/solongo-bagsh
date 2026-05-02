@@ -159,7 +159,9 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         backgroundColor: '#F8F9FA',
         paddingHorizontal: 20,
+        borderColor: "#d0d4d9",
         elevation: 2,
+
     },
     buttonWrapper: { 
         width: '100%',
